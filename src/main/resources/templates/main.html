@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Api 목록</title>
+    <style>
+        body { background: #fff; }
+        .blueOne {
+            border-collapse: collapse;
+        }
+        .blueOne th {
+            padding: 10px;
+            color: #168;
+            border-bottom: 3px solid #168;
+            text-align: left;
+        }
+        .blueOne td {
+            color: #669;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .blueOne tr:hover td {
+            color: #004;
+        }
+        table {
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <h3 style="color:#168">&nbsp;&nbsp;■ Api 선택</h3>
+    <table class="blueOne">
+        <tr>
+            <th style="text-align: center">Api 명</th>
+        </tr>
+        <tr th:each="apiList: ${apiList}"><td><a th:text="${apiList.apiName}" th:onclick="selectApi([[${apiList.apiId}]])"></a></td></tr>
+    </table>
+</body>
+<script type="text/javascript" src="../../assets/js/jquery-3.4.1.js"></script>
+<script>
+    function selectApi(apiId) {
+        location.href="parameterList?apiId="+apiId;
+    }
+</script>
+</html>
